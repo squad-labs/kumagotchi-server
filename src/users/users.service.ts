@@ -38,8 +38,8 @@ export class UsersService {
     return {
       userId: newUser._id.toString(),
       accessToken,
-      ens: userInfo.ens,
-      profileImg: userInfo.profileImg,
+      ens: newUser.ens,
+      profileImg: newUser.profileImg,
       createdAt: newUser.createdAt,
     };
   }

@@ -24,7 +24,6 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
       this.connectedClients.add(client.id);
       console.log('Client connected to chat:', client.id);
 
-      // 안전하게 사용자 수 브로드캐스트
       this.broadcastUserCount();
     } catch (error) {
       console.error(`Connection error: ${error.message}`);

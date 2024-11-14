@@ -2,17 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Users } from 'src/common/schemas/users.schema';
-import { Comments } from 'src/common/schemas/comments.schema';
-import { ConfigService } from '@nestjs/config';
+import { Chat } from 'src/common/schemas/chat.schema';
 
 @Injectable()
 export class DevService {
   constructor(
     @InjectModel('Users')
     private usersModel: Model<Users>,
-    @InjectModel('Comments')
-    private commentsModel: Model<Comments>,
-    private configService: ConfigService,
+    @InjectModel('Chat')
+    private chatModel: Model<Chat>,
   ) {}
 
   async removeUser(userId: string) {
@@ -21,10 +19,9 @@ export class DevService {
     return deletedUser._id;
   }
 
-  async removeComment(commentId: string) {
-    const deletedComment =
-      await this.commentsModel.findByIdAndDelete(commentId);
+  async removeComment(chatId: string) {
+    const deletedChat = await this.chatModel.findByIdAndDelete(chatId);
 
-    return deletedComment._id;
+    return deletedChat._id;
   }
 }

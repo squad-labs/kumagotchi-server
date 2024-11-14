@@ -13,15 +13,15 @@ export class UserIdReqDto {
   userId?: string;
 }
 
-export class CommentIdReqDto {
+export class ChatIdReqDto {
   @IsNotEmpty()
   @IsString()
   @ApiProperty({
     example: '66bb101601e784817a6183e8',
-    description: 'commentId',
+    description: 'chatId',
     required: true,
   })
-  commentId: string;
+  chatId: string;
 }
 
 export class PageReqDto {

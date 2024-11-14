@@ -1,7 +1,7 @@
 import { Controller, Param, Delete } from '@nestjs/common';
 import { DevService } from './dev.service';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { CommentIdReqDto, UserIdReqDto } from 'src/common/dto/req.dto';
+import { ChatIdReqDto, UserIdReqDto } from 'src/common/dto/req.dto';
 import { TransactionService } from 'src/transaction/transaction.service';
 
 @ApiTags('Dev')
@@ -19,8 +19,8 @@ export class DevController {
   }
 
   @ApiBearerAuth()
-  @Delete('comment/:commentId')
-  removeComment(@Param() { commentId }: CommentIdReqDto) {
-    return this.devService.removeComment(commentId);
+  @Delete('chat/:chatId')
+  removeComment(@Param() { chatId }: ChatIdReqDto) {
+    return this.devService.removeComment(chatId);
   }
 }

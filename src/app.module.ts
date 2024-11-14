@@ -2,7 +2,6 @@ import { Logger, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import mongodbConfig from './common/config/mongodb.config';
-import swaggerConfig from './common/config/swagger.config';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { HttpExceptionFilter } from './common/filter/http-exception.filter';
 import { APP_FILTER } from '@nestjs/core';
@@ -21,7 +20,7 @@ import { ChatModule } from './chat/chat.module';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: `.env.${process.env.STAGE}`,
-      load: [mongodbConfig, swaggerConfig, jwtConfig, s3Config, chainConfig],
+      load: [mongodbConfig, jwtConfig, s3Config, chainConfig],
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
