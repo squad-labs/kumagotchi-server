@@ -8,13 +8,13 @@ import { HttpExceptionFilter } from './common/filter/http-exception.filter';
 import { APP_FILTER } from '@nestjs/core';
 import { HealthModule } from './health/health.module';
 import { UsersModule } from './users/users.module';
-import { CommentsModule } from './comments/comments.module';
 import { DevModule } from './dev/dev.module';
 import { TransactionModule } from './transaction/transaction.module';
 import jwtConfig from './common/config/jwt.config';
 import s3Config from './common/config/s3.config';
 import chainConfig from './common/config/chain.config';
 import { ScheduleModule } from '@nestjs/schedule';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
@@ -34,7 +34,7 @@ import { ScheduleModule } from '@nestjs/schedule';
     }),
     ScheduleModule.forRoot(),
     UsersModule,
-    CommentsModule,
+    ChatModule,
     TransactionModule,
     HealthModule,
     DevModule,
