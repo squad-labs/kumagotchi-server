@@ -18,7 +18,6 @@ export class UsersController {
 
   @Public()
   @Post('login')
-  @ApiPostResponse(LoginResDto)
   @ApiOperation({ summary: 'wallet user create' })
   create(@Body() data: LoginReqDto) {
     return this.usersService.create(data);
@@ -40,7 +39,6 @@ export class UsersController {
   }
 
   @Public()
-  @ApiGetResponse(UserResDto)
   @Get('detail/:userId')
   @ApiOperation({ summary: 'login user 정보' })
   findOne(@Param() { userId }: UserIdReqDto) {
