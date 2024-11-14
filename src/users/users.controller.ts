@@ -1,12 +1,7 @@
-import { Controller, Get, Post, Body, Headers } from '@nestjs/common';
+import { Controller, Get, Post, Body, Headers, Param } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { LoginReqDto } from './dto/req.dto';
-import {
-  ApiBearerAuth,
-  ApiExtraModels,
-  ApiOperation,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { User, UserAfterAuth } from 'src/common/decorator/user.decorator';
 import { Public } from 'src/common/decorator/public.decorator';
 import {
@@ -14,9 +9,9 @@ import {
   ApiPostResponse,
 } from 'src/common/decorator/swagger.decorator';
 import { LoginResDto, UserResDto } from './dto/res.dto';
+import { UserIdReqDto } from 'src/common/dto/req.dto';
 
 @ApiTags('Users')
-@ApiExtraModels(LoginResDto, UserResDto)
 @Controller('api/users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -29,7 +24,7 @@ export class UsersController {
     return this.usersService.create(data);
   }
 
-  @ApiBearerAuth()
+  @Public()
   @Post('refresh')
   @ApiOperation({ summary: 'refresh token 요청' })
   async refresh(
@@ -44,11 +39,11 @@ export class UsersController {
     return { accessToken, refreshToken };
   }
 
-  @ApiBearerAuth()
+  @Public()
   @ApiGetResponse(UserResDto)
-  @Get('detail')
+  @Get('detail/:userId')
   @ApiOperation({ summary: 'login user 정보' })
-  findOne(@User() user: UserAfterAuth) {
-    return this.usersService.findOne(user.id);
+  findOne(@Param() { userId }: UserIdReqDto) {
+    return this.usersService.findOne(userId);
   }
 }

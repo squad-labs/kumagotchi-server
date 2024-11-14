@@ -6,11 +6,11 @@ export class UserIdReqDto {
   @IsOptional()
   @IsString()
   @ApiProperty({
-    example: '66b18d4ef740aaf686ed71d0',
+    example: '6735e94269e4173579def4ae',
     description: 'userId',
     required: false,
   })
-  userId?: string;
+  userId: string;
 }
 
 export class ChatIdReqDto {
