@@ -39,3 +39,14 @@ export class PageReqDto {
   @IsInt()
   pageSize?: number = 10;
 }
+
+export class MissionIdReqDto {
+  @IsNotEmpty()
+  @IsString()
+  @ApiProperty({
+    example: '66bb101601e784817a6183e8',
+    description: 'missionId',
+    required: true,
+  })
+  missionId: string;
+}

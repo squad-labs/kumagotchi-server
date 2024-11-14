@@ -29,10 +29,22 @@ erDiagram
     string address
     string imageUrl
     string level
-    number stroke
+    number compliments
     number feed
-    number praise
+    number party
     number sleep
+    date createdAt
+  }
+
+  Mission {
+    string _id
+    date startAt
+    date endAt
+    string status
+    string type
+    number goal
+    number count
+    boolean result
     date createdAt
   }
 ```

@@ -18,13 +18,13 @@ export class Character {
   level: string;
 
   @Prop()
-  stroke: number;
+  compliments: number;
 
   @Prop()
   feed: number;
 
   @Prop()
-  praise: number;
+  party: number;
 
   @Prop()
   sleep: number;

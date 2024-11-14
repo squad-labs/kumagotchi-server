@@ -14,6 +14,7 @@ import s3Config from './common/config/s3.config';
 import chainConfig from './common/config/chain.config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { ChatModule } from './chat/chat.module';
+import { MissionModule } from './mission/mission.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { ChatModule } from './chat/chat.module';
     ScheduleModule.forRoot(),
     UsersModule,
     ChatModule,
+    MissionModule,
     TransactionModule,
     HealthModule,
     DevModule,

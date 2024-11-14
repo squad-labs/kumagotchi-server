@@ -22,7 +22,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   handleConnection(client: Socket) {
     try {
       this.connectedClients.add(client.id);
-      console.log('Client connected to chat:', client.id);
+      console.log('client has connected: chat', client.id);
 
       this.broadcastUserCount();
     } catch (error) {
@@ -33,7 +33,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   handleDisconnect(client: Socket) {
     try {
       this.connectedClients.delete(client.id);
-      console.log('Client disconnected from chat:', client.id);
+      console.log('client has disconnected: chat', client.id);
 
       this.broadcastUserCount();
     } catch (error) {
