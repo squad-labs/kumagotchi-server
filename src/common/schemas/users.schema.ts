@@ -15,6 +15,9 @@ export class Users {
   timezone: string;
 
   @Prop()
+  handle: string;
+
+  @Prop()
   ens: string;
 
   @Prop()

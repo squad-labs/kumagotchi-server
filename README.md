@@ -11,6 +11,7 @@ erDiagram
     string wallet
     number poolIn
     string timezone
+    string handle
     string ens
     string profileImg
     string refreshToken

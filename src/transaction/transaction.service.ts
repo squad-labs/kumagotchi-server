@@ -61,6 +61,12 @@ export class TransactionService {
       userInfo = await this.usersModel.findById(createdUser.userId);
     }
 
-    return userInfo;
+    const result = {
+      ...userInfo.toObject(),
+      userId: userInfo._id,
+    };
+    delete result._id;
+
+    return result;
   }
 }

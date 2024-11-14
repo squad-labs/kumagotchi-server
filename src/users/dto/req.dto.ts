@@ -25,6 +25,15 @@ export class LoginReqDto {
   @IsString()
   @ApiPropertyOptional({
     type: String,
+    description: 'x handle',
+    example: 'watcherkuma',
+  })
+  handle?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({
+    type: String,
     description: 'ens',
     example: 'tokenburner.eth',
   })
