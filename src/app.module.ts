@@ -15,6 +15,7 @@ import chainConfig from './common/config/chain.config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { ChatModule } from './chat/chat.module';
 import { MissionModule } from './mission/mission.module';
+import { CharacterModule } from './character/character.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { MissionModule } from './mission/mission.module';
     TransactionModule,
     HealthModule,
     DevModule,
+    CharacterModule,
   ],
   providers: [
     Logger,

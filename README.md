@@ -9,6 +9,7 @@ erDiagram
   Users {
     string _id
     string wallet
+    number poolIn
     string timezone
     string ens
     string profileImg
@@ -25,6 +26,7 @@ erDiagram
 
   Character {
     string _id
+    string name
     number poolIn
     string address
     string imageUrl

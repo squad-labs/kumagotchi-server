@@ -18,9 +18,15 @@ export class UsersService {
   async create(data: LoginReqDto) {
     const { wallet } = data;
 
-    const userInfo = await this.usersModel.findOne({ wallet });
+    let userInfo = await this.usersModel.findOne({ wallet });
 
     if (userInfo) {
+      userInfo = await this.usersModel.findByIdAndUpdate(
+        userInfo._id,
+        { $set: data },
+        { new: true },
+      );
+
       const accessToken = this.generateAccessToken(userInfo._id.toString());
 
       return {

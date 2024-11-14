@@ -9,6 +9,9 @@ export class Users {
   wallet: string;
 
   @Prop()
+  poolIn: number;
+
+  @Prop()
   timezone: string;
 
   @Prop()

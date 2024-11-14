@@ -6,6 +6,9 @@ export type CharacterDocument = Character & mongoose.Document;
 @Schema({ timestamps: true, versionKey: '_v' })
 export class Character {
   @Prop()
+  name: string;
+
+  @Prop()
   poolIn: number;
 
   @Prop()
