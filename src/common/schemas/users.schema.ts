@@ -12,25 +12,16 @@ export class Users {
   timezone: string;
 
   @Prop()
-  point: number;
+  ens: string;
 
   @Prop()
-  grade: string;
+  profileImg: string;
 
   @Prop()
   refreshToken: string;
 
   @Prop()
-  updateShareAt: Date;
-
-  @Prop()
   createdAt: Date;
-
-  @Prop({ type: Object })
-  nftHolder: {
-    nftName: string;
-    balance: number;
-  }[];
 }
 
 export const UsersSchema = SchemaFactory.createForClass(Users);

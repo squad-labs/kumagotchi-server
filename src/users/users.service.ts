@@ -25,19 +25,21 @@ export class UsersService {
 
       return {
         userId: userInfo._id.toString(),
+        ens: userInfo.ens,
+        profileImg: userInfo.profileImg,
         accessToken,
         createdAt: userInfo.createdAt,
       };
     }
 
-    const newUser = await this.usersModel.create({
-      wallet,
-    });
+    const newUser = await this.usersModel.create(data);
     const accessToken = this.generateAccessToken(newUser._id.toString());
 
     return {
       userId: newUser._id.toString(),
       accessToken,
+      ens: userInfo.ens,
+      profileImg: userInfo.profileImg,
       createdAt: newUser.createdAt,
     };
   }
@@ -60,6 +62,8 @@ export class UsersService {
       userId: userInfo._id,
       wallet: userInfo.wallet,
       timezone: userInfo.timezone,
+      ens: userInfo.ens,
+      profileImg: userInfo.profileImg,
       accessToken,
       refreshToken,
       createdAt: userInfo.createdAt,

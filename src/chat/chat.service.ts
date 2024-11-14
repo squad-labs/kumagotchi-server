@@ -1,26 +1,22 @@
+// chat.service.ts
 import { Injectable } from '@nestjs/common';
-import { CreateChatDto } from './dto/req.dto';
-import { UpdateChatDto } from './dto/res.dto';
+import { CreateMessageDto } from './dto/req.dto';
 
 @Injectable()
 export class ChatService {
-  create(createChatDto: CreateChatDto) {
-    return 'This action adds a new chat';
+  private messages: any[] = [];
+
+  async saveMessage(messageDto: CreateMessageDto) {
+    const message = {
+      id: Date.now(),
+      ...messageDto,
+      timestamp: new Date(),
+    };
+    this.messages.push(message);
+    return message;
   }
 
-  findAll() {
-    return `This action returns all chat`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} chat`;
-  }
-
-  update(id: number, updateChatDto: UpdateChatDto) {
-    return `This action updates a #${id} chat`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} chat`;
+  getRecentMessages() {
+    return this.messages.slice(-50);
   }
 }

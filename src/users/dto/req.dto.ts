@@ -20,4 +20,22 @@ export class LoginReqDto {
     example: 'Asia/Seoul',
   })
   timezone?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({
+    type: String,
+    description: 'ens',
+    example: 'tokenburner.eth',
+  })
+  ens?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({
+    type: String,
+    example:
+      'https://i.seadn.io/gae/vzj-_EN2uwXCv7-g01_vK1-Sqp8MtpQQSed8-YmqI8N_V9mHv1mW1HYJbqaFxsASxYUrRIs9ihhUSmPRfwL5UwJSIBc57haYFosWWQ?auto=format&dpr=1&w=1000',
+  })
+  profileImg?: string;
 }
