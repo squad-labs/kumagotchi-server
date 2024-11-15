@@ -35,7 +35,7 @@ export class ChatService {
   async getRecentMessages(page: number, pageSize: number) {
     const messages = await this.chatModel
       .find()
-      .sort({ createdAt: 1 })
+      .sort({ createdAt: -1 })
       .skip((page - 1) * pageSize)
       .limit(pageSize);
 
