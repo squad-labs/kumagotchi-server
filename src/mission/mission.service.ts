@@ -110,8 +110,12 @@ export class MissionService {
     return mission;
   }
 
-  async getMission(status?: string) {
+  async getMission(status?: string, result?: boolean) {
     const query = status ? { status } : {};
+
+    if (result !== undefined) {
+      query['result'] = result;
+    }
 
     const missions = await this.missionModel.find(query);
 

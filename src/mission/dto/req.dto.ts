@@ -66,3 +66,13 @@ export class StatusReqDto {
   })
   status?: string;
 }
+
+export class ResultReqDto {
+  @IsOptional()
+  @IsString()
+  @ApiProperty({
+    example: true,
+    required: false,
+  })
+  result?: boolean;
+}

@@ -1,6 +1,11 @@
 import { Controller, Post, Body, Get, Query } from '@nestjs/common';
 import { MissionService } from './mission.service';
-import { CreateMissionDto, MissionReqDto, StatusReqDto } from './dto/req.dto';
+import {
+  CreateMissionDto,
+  MissionReqDto,
+  ResultReqDto,
+  StatusReqDto,
+} from './dto/req.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { Public } from 'src/common/decorator/public.decorator';
 
@@ -23,7 +28,10 @@ export class MissionController {
 
   @Public()
   @Get('find')
-  getMission(@Query() { status }: StatusReqDto) {
-    return this.missionService.getMission(status);
+  getMission(
+    @Query() { status }: StatusReqDto,
+    @Query() { result }: ResultReqDto,
+  ) {
+    return this.missionService.getMission(status, result);
   }
 }
