@@ -18,19 +18,10 @@ export class Character {
   imageUrl: string;
 
   @Prop()
-  level: string;
+  level: number;
 
   @Prop()
-  compliments: number;
-
-  @Prop()
-  feed: number;
-
-  @Prop()
-  party: number;
-
-  @Prop()
-  sleep: number;
+  completedMissions: number;
 
   @Prop()
   createdAt: Date;

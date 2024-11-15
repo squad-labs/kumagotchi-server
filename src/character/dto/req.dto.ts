@@ -13,7 +13,7 @@ export class CreateCharacterDto {
   @IsNotEmpty()
   @IsString()
   @ApiProperty({
-    example: '66ee12c9aecfeb6f0e98cb6a',
+    example: '0x00639eb72D1374110f509a157FFab47EFad29AB9',
     required: true,
   })
   address: string;
@@ -26,4 +26,35 @@ export class CreateCharacterDto {
     required: true,
   })
   imageUrl: string;
+}
+
+export class NameReqDto {
+  @IsNotEmpty()
+  @IsString()
+  @ApiProperty({
+    example: 'KUMAGOTCHI',
+    required: true,
+  })
+  name: string;
+}
+
+export class ImageReqDto {
+  @IsNotEmpty()
+  @IsString()
+  @ApiProperty({
+    example:
+      'https://dev-onikuma-s3.s3.ap-northeast-2.amazonaws.com/kumagotchi.png',
+    required: true,
+  })
+  imageUrl: string;
+}
+
+export class FileReqDto {
+  @ApiProperty({
+    description: 'file',
+    type: 'string',
+    format: 'binary',
+    required: true,
+  })
+  file: any;
 }

@@ -31,11 +31,8 @@ erDiagram
     number poolIn
     string address
     string imageUrl
-    string level
-    number compliments
-    number feed
-    number party
-    number sleep
+    number level
+    number completedMissions
     date createdAt
   }
 

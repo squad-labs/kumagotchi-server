@@ -1,3 +1,4 @@
+import { CharacterSchema } from './../common/schemas/character.schema';
 import { Module } from '@nestjs/common';
 import { MissionService } from './mission.service';
 import { MissionController } from './mission.controller';
@@ -11,6 +12,7 @@ import { UsersSchema } from 'src/common/schemas/users.schema';
     MongooseModule.forFeature([
       { name: 'Mission', schema: MissionSchema },
       { name: 'Users', schema: UsersSchema },
+      { name: 'Character', schema: CharacterSchema },
     ]),
   ],
   controllers: [MissionController],

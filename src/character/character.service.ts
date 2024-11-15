@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCharacterDto } from './dto/req.dto';
-import { UpdateCharacterDto } from './dto/res.dto';
 import { Character } from 'src/common/schemas/character.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -17,17 +16,28 @@ export class CharacterService {
       ...data,
       poolIn: 0,
       level: 0,
-      compliments: 0,
-      feed: 0,
-      party: 0,
-      sleep: 0,
+      completedMissions: 0,
     };
     const newCharacter = await this.characterModel.create(newCharacterData);
 
     return newCharacter;
   }
 
-  findOne() {
-    return this.characterModel.findOne();
+  async findOne(name: string) {
+    return await this.characterModel.findOne({ name });
+  }
+
+  async changeImage(file: any, name: string) {
+    const character = await this.characterModel.findOneAndUpdate(
+      { name },
+      { imageUrl: file.location },
+      { new: true },
+    );
+
+    if (!character) {
+      return 'Character not found';
+    }
+
+    return character;
   }
 }

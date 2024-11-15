@@ -2,7 +2,6 @@ import { DeleteObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { MulterOptions } from '@nestjs/platform-express/multer/interfaces/multer-options.interface';
 
 import * as multerS3 from 'multer-s3';
-import { extname } from 'path';
 import * as moment from 'moment-timezone';
 
 let uploadCounter = 0; // 파일 업로드 카운터

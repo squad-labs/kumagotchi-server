@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import { Mission } from 'src/common/schemas/mission.schema';
 import { MissionGateway } from './mission.gateway';
 import { Users } from 'src/common/schemas/users.schema';
+import { Character } from 'src/common/schemas/character.schema';
 
 @Injectable()
 export class MissionService {
@@ -13,6 +14,9 @@ export class MissionService {
     private missionModel: Model<Mission>,
     @InjectModel('Users')
     private usersModel: Model<Users>,
+    @InjectModel('Character')
+    private characterModel: Model<Character>,
+
     private missionGateway: MissionGateway,
   ) {}
 
@@ -100,6 +104,14 @@ export class MissionService {
         {
           status: 'ended',
           result: true,
+        },
+        { new: true },
+      );
+
+      await this.characterModel.findOneAndUpdate(
+        { name: 'KUMAGOTCHI' },
+        {
+          $inc: { completedMissions: 1 },
         },
         { new: true },
       );

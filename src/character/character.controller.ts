@@ -1,8 +1,17 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Query,
+  UseInterceptors,
+  UploadedFile,
+} from '@nestjs/common';
 import { CharacterService } from './character.service';
-import { CreateCharacterDto } from './dto/req.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { CreateCharacterDto, FileReqDto, NameReqDto } from './dto/req.dto';
+import { ApiConsumes, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Public } from 'src/common/decorator/public.decorator';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @ApiTags('Character')
 @Controller('api/character')
@@ -17,7 +26,22 @@ export class CharacterController {
 
   @Public()
   @Get('find')
-  findOne() {
-    return this.characterService.findOne();
+  findOne(@Query() { name }: NameReqDto) {
+    return this.characterService.findOne(name);
+  }
+
+  @Public()
+  @Post('change-image')
+  @ApiOperation({
+    summary: 'Change character image',
+  })
+  @UseInterceptors(FileInterceptor('file'))
+  @ApiConsumes('multipart/form-data')
+  changeImage(
+    @UploadedFile() file: any,
+    @Query() { name }: NameReqDto,
+    @Body() data: FileReqDto,
+  ) {
+    return this.characterService.changeImage(file, name);
   }
 }
