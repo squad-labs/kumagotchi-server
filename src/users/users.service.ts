@@ -50,7 +50,7 @@ export class UsersService {
     };
   }
 
-  async findOne(userId: string) {
+  async findOneUser(userId: string) {
     const accessToken = this.generateAccessToken(userId);
     const refreshToken = this.generateRefreshToken(userId);
 
@@ -59,6 +59,28 @@ export class UsersService {
       { refreshToken },
       { new: true },
     );
+
+    if (!userInfo) {
+      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+    }
+
+    return {
+      userId: userInfo._id,
+      wallet: userInfo.wallet,
+      timezone: userInfo.timezone,
+      ens: userInfo.ens,
+      profileImg: userInfo.profileImg,
+      accessToken,
+      refreshToken,
+      createdAt: userInfo.createdAt,
+    };
+  }
+
+  async findOneWallet(wallet: string) {
+    const userInfo = await this.usersModel.findOne({ wallet });
+
+    const accessToken = this.generateAccessToken(userInfo._id.toString());
+    const refreshToken = this.generateRefreshToken(userInfo._id.toString());
 
     if (!userInfo) {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);

@@ -1,15 +1,10 @@
 import { Controller, Get, Post, Body, Headers, Param } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { LoginReqDto } from './dto/req.dto';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { User, UserAfterAuth } from 'src/common/decorator/user.decorator';
 import { Public } from 'src/common/decorator/public.decorator';
-import {
-  ApiGetResponse,
-  ApiPostResponse,
-} from 'src/common/decorator/swagger.decorator';
-import { LoginResDto, UserResDto } from './dto/res.dto';
-import { UserIdReqDto } from 'src/common/dto/req.dto';
+import { UserIdReqDto, WalletReqDto } from 'src/common/dto/req.dto';
 
 @ApiTags('Users')
 @Controller('api/users')
@@ -39,9 +34,16 @@ export class UsersController {
   }
 
   @Public()
-  @Get('detail/:userId')
-  @ApiOperation({ summary: 'login user 정보' })
-  findOne(@Param() { userId }: UserIdReqDto) {
-    return this.usersService.findOne(userId);
+  @Post('detail/user')
+  @ApiOperation({ summary: 'login user 정보 by userId' })
+  findOneUser(@Body() { userId }: UserIdReqDto) {
+    return this.usersService.findOneUser(userId);
+  }
+
+  @Public()
+  @Post('detail/wallet')
+  @ApiOperation({ summary: 'login user 정보 by wallet' })
+  findOneWallet(@Body() { wallet }: WalletReqDto) {
+    return this.usersService.findOneWallet(wallet);
   }
 }

@@ -3,14 +3,25 @@ import { Transform } from 'class-transformer';
 import { IsInt, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class UserIdReqDto {
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   @ApiProperty({
     example: '6735e94269e4173579def4ae',
     description: 'userId',
-    required: false,
+    required: true,
   })
   userId: string;
+}
+
+export class WalletReqDto {
+  @IsNotEmpty()
+  @IsString()
+  @ApiProperty({
+    example: '0x00639eb72D1374110f509a157FFab47EFad29AB9',
+    description: 'wallet',
+    required: true,
+  })
+  wallet: string;
 }
 
 export class ChatIdReqDto {
