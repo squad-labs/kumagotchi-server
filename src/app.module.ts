@@ -38,9 +38,9 @@ import { CharacterModule } from './character/character.module';
     ChatModule,
     MissionModule,
     TransactionModule,
+    CharacterModule,
     HealthModule,
     DevModule,
-    CharacterModule,
   ],
   providers: [
     Logger,

@@ -4,10 +4,8 @@ import {
   WebSocketServer,
   OnGatewayConnection,
   OnGatewayDisconnect,
-  SubscribeMessage,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
-import { ChatService } from './chat.service';
 import { CreateMessageDto } from './dto/req.dto';
 
 @WebSocketGateway({ namespace: '/chat', cors: { origin: '*' } })
@@ -16,8 +14,6 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   server: Server;
 
   private connectedClients: Set<string> = new Set();
-
-  constructor(private readonly chatService: ChatService) {}
 
   handleConnection(client: Socket) {
     try {
@@ -41,19 +37,8 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
     }
   }
 
-  @SubscribeMessage('message')
-  async handleMessage(client: Socket, payload: CreateMessageDto) {
-    try {
-      const message = await this.chatService.saveMessage(payload);
-      this.server.emit('message', message);
-    } catch (error) {
-      client.emit('error', 'Message sending failed');
-    }
-  }
-
-  @SubscribeMessage('typing')
-  handleTyping(client: Socket, username: string) {
-    client.broadcast.emit('typing', username);
+  sendNewMessage(wallet: string, message: CreateMessageDto) {
+    this.server.emit('newMessage', { wallet, message });
   }
 
   private broadcastUserCount() {

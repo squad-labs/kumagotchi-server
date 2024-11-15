@@ -20,8 +20,8 @@ erDiagram
 
   Chat {
     string _id
-    string contents
-    string userWallet
+    string message
+    string wallet
     date createdAt
   }
 

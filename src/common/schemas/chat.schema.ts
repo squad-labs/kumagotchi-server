@@ -6,10 +6,10 @@ export type ChatDocument = Chat & mongoose.Document;
 @Schema({ timestamps: true, versionKey: '_v' })
 export class Chat {
   @Prop()
-  contents: string;
+  message: string;
 
   @Prop()
-  userWallet: string;
+  wallet: string;
 
   @Prop()
   createdAt: Date;
