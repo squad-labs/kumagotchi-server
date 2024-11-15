@@ -7,6 +7,7 @@ import { ConfigService } from '@nestjs/config';
 import { PoolInReqDto } from './dto/req.dto';
 import { UsersService } from 'src/users/users.service';
 import { Character } from 'src/common/schemas/character.schema';
+import { CONSTANTS } from 'src/common/config/constants';
 
 @Injectable()
 export class TransactionService {
@@ -68,5 +69,11 @@ export class TransactionService {
     delete result._id;
 
     return result;
+  }
+
+  getPoolAddress() {
+    return {
+      poolAddress: CONSTANTS,
+    };
   }
 }

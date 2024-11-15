@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { TransactionService } from './transaction.service';
 import { PoolInReqDto } from './dto/req.dto';
@@ -13,5 +13,11 @@ export class TransactionController {
   @Post('pool-in')
   poolIn(@Body() poolInReqDto: PoolInReqDto) {
     return this.transactionService.poolIn(poolInReqDto);
+  }
+
+  @Public()
+  @Get('pool-address')
+  getPoolAddress() {
+    return this.transactionService.getPoolAddress();
   }
 }
