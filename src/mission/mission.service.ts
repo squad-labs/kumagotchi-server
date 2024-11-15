@@ -88,7 +88,11 @@ export class MissionService {
       { new: true },
     );
 
-    this.missionGateway.sendMissionProgress(userInfo.wallet, mission.count);
+    this.missionGateway.sendMissionProgress(
+      userInfo.wallet,
+      mission.count,
+      mission.goal,
+    );
 
     if (mission.count >= mission.goal) {
       mission = await this.missionModel.findByIdAndUpdate(

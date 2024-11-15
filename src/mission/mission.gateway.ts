@@ -26,8 +26,8 @@ export class MissionGateway
     console.log('client has disconnected: activity', client.id);
   }
 
-  sendMissionProgress(wallet: string, count: number) {
-    this.server.emit('missionProgress', { wallet, count });
+  sendMissionProgress(wallet: string, count: number, goal: number) {
+    this.server.emit('missionProgress', { wallet, count, goal });
   }
 
   sendMissionComplete() {
