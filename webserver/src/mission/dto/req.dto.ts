@@ -50,7 +50,7 @@ export class MissionReqDto {
   @IsString()
   @ApiProperty({
     example: 'compliments',
-    description: 'compliments, feed, party, sleep',
+    description: 'compliments, feed, walk, sleep',
     required: true,
   })
   type: string;
