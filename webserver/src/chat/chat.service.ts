@@ -25,7 +25,12 @@ export class ChatService {
       throw new Error('User not found');
     }
 
-    const newMessage = await this.chatModel.create(data);
+    const newMessage = await this.chatModel.create({
+      ...data,
+      ens: userInfo.ens,
+      profileImg: userInfo.profileImg,
+      handle: userInfo.handle,
+    });
 
     this.chatGateway.server.emit('newMessage', newMessage);
 

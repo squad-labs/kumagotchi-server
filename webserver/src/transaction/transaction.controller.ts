@@ -1,3 +1,4 @@
+import { UserIdReqDto } from 'src/common/dto/req.dto';
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { TransactionService } from './transaction.service';
@@ -19,5 +20,11 @@ export class TransactionController {
   @Get('pool-address')
   getPoolAddress() {
     return this.transactionService.getPoolAddress();
+  }
+
+  @Public()
+  @Post('pool-amount')
+  getPoolAmount(@Body() { userId }: UserIdReqDto) {
+    return this.transactionService.getPoolAmount(userId);
   }
 }

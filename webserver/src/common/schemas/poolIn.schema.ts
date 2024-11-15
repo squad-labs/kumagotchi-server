@@ -1,27 +1,21 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 
-export type ChatDocument = Chat & mongoose.Document;
+export type PoolInDocument = PoolIn & mongoose.Document;
 
 @Schema({ timestamps: true, versionKey: '_v' })
-export class Chat {
-  @Prop()
-  message: string;
-
+export class PoolIn {
   @Prop()
   wallet: string;
 
   @Prop()
-  ens: string;
+  chain: string;
 
   @Prop()
-  profileImg: string;
-
-  @Prop()
-  handle: string;
+  poolIn: number;
 
   @Prop()
   createdAt: Date;
 }
 
-export const ChatSchema = SchemaFactory.createForClass(Chat);
+export const PoolInSchema = SchemaFactory.createForClass(PoolIn);

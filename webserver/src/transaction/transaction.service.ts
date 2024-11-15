@@ -8,6 +8,7 @@ import { PoolInReqDto } from './dto/req.dto';
 import { UsersService } from 'src/users/users.service';
 import { Character } from 'src/common/schemas/character.schema';
 import { CONSTANTS } from 'src/common/config/constants';
+import { PoolIn } from 'src/common/schemas/poolIn.schema';
 
 @Injectable()
 export class TransactionService {
@@ -20,6 +21,9 @@ export class TransactionService {
     private usersModel: Model<Users>,
     @InjectModel('Character')
     private characterModel: Model<Character>,
+    @InjectModel('PoolIn')
+    private poolInModel: Model<PoolIn>,
+
     private readonly usersService: UsersService,
     private configService: ConfigService,
   ) {
@@ -68,12 +72,30 @@ export class TransactionService {
     };
     delete result._id;
 
+    await this.poolInModel.create({
+      wallet: data.wallet,
+      chain: data.chain,
+      poolIn: data.tokenAmount,
+    });
+
     return result;
   }
 
   getPoolAddress() {
     return {
       poolAddress: CONSTANTS,
+    };
+  }
+
+  async getPoolAmount(userId: string) {
+    const userInfo = await this.usersModel.findById(userId);
+    const characterInfo = await this.characterModel.findOne({
+      name: 'KUMAGOTCHI',
+    });
+
+    return {
+      userPoolIn: userInfo.poolIn,
+      totalPoolIn: characterInfo.poolIn,
     };
   }
 }

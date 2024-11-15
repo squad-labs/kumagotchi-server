@@ -22,6 +22,9 @@ erDiagram
     string _id
     string message
     string wallet
+    string ens
+    string profileImg
+    string handle
     date createdAt
   }
 
@@ -46,5 +49,12 @@ erDiagram
     number count
     boolean result
     date createdAt
+  }
+
+  PoolIn {
+    string _id
+    string wallet
+    string chain
+    number poolIn
   }
 ```

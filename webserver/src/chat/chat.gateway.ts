@@ -37,8 +37,20 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
     }
   }
 
-  sendNewMessage(wallet: string, message: CreateMessageDto) {
-    this.server.emit('newMessage', { wallet, message });
+  sendNewMessage(
+    wallet: string,
+    message: CreateMessageDto,
+    ens?: string,
+    profileImg?: string,
+    handle?: string,
+  ) {
+    this.server.emit('newMessage', {
+      wallet,
+      ens,
+      profileImg,
+      handle,
+      message,
+    });
   }
 
   private broadcastUserCount() {
