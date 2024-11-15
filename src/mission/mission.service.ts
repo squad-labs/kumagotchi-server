@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { CreateMissionDto } from './dto/req.dto';
+import { CreateMissionDto, MissionReqDto } from './dto/req.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Mission } from 'src/common/schemas/mission.schema';
@@ -47,28 +47,58 @@ export class MissionService {
     return mission;
   }
 
-  async setCompliments(userId: string) {
-    const userInfo = await this.usersModel.findById(userId);
+  async setMissionProgress(data: MissionReqDto) {
+    const now = new Date();
+
+    const missions = await this.missionModel.find({
+      type: data.type,
+      status: { $ne: 'ended' },
+    });
+
+    for (const mission of missions) {
+      let newStatus = 'during';
+      if (now < mission.startAt) {
+        newStatus = 'upComing';
+      } else if (now > mission.endAt) {
+        newStatus = 'ended';
+      }
+
+      if (mission.status !== newStatus) {
+        await this.missionModel.findByIdAndUpdate(mission._id, {
+          status: newStatus,
+        });
+      }
+    }
+
     const missionInfo = await this.missionModel.findOne({
-      type: 'compliments',
+      type: data.type,
       status: 'during',
     });
 
     if (!missionInfo) {
-      return 'Mission not found';
+      throw new BadRequestException('Mission not found');
     }
 
-    const mission = await this.missionModel.findByIdAndUpdate(missionInfo._id, {
-      count: missionInfo.count + 1,
-    });
+    const userInfo = await this.usersModel.findById(data.userId);
+    let mission = await this.missionModel.findByIdAndUpdate(
+      missionInfo._id,
+      {
+        count: missionInfo.count + 1,
+      },
+      { new: true },
+    );
 
     this.missionGateway.sendMissionProgress(userInfo.wallet, mission.count);
 
-    if (mission.count === mission.goal) {
-      await this.missionModel.findByIdAndUpdate(mission._id, {
-        status: 'ended',
-        result: true,
-      });
+    if (mission.count >= mission.goal) {
+      mission = await this.missionModel.findByIdAndUpdate(
+        mission._id,
+        {
+          status: 'ended',
+          result: true,
+        },
+        { new: true },
+      );
 
       this.missionGateway.sendMissionComplete();
     }
@@ -76,90 +106,11 @@ export class MissionService {
     return mission;
   }
 
-  async setFeed(userId: string) {
-    const userInfo = await this.usersModel.findById(userId);
-    const missionInfo = await this.missionModel.findOne({
-      type: 'feed',
-      status: 'during',
-    });
+  async getMission(status?: string) {
+    const query = status ? { status } : {};
 
-    if (!missionInfo) {
-      return 'Mission not found';
-    }
+    const missions = await this.missionModel.find(query);
 
-    const mission = await this.missionModel.findByIdAndUpdate(missionInfo._id, {
-      count: missionInfo.count + 1,
-    });
-
-    this.missionGateway.sendMissionProgress(userInfo.wallet, mission.count);
-
-    if (mission.count === mission.goal) {
-      await this.missionModel.findByIdAndUpdate(mission._id, {
-        status: 'ended',
-        result: true,
-      });
-
-      this.missionGateway.sendMissionComplete();
-    }
-
-    return mission;
-  }
-
-  async setParty(userId: string) {
-    const userInfo = await this.usersModel.findById(userId);
-    const missionInfo = await this.missionModel.findOne({
-      type: 'party',
-      status: 'during',
-    });
-
-    if (!missionInfo) {
-      return 'Mission not found';
-    }
-
-    const mission = await this.missionModel.findByIdAndUpdate(missionInfo._id, {
-      count: missionInfo.count + 1,
-    });
-
-    this.missionGateway.sendMissionProgress(userInfo.wallet, mission.count);
-
-    if (mission.count === mission.goal) {
-      await this.missionModel.findByIdAndUpdate(mission._id, {
-        status: 'ended',
-        result: true,
-      });
-
-      this.missionGateway.sendMissionComplete();
-    }
-
-    return mission;
-  }
-
-  async setSleep(userId: string) {
-    const userInfo = await this.usersModel.findById(userId);
-    const missionInfo = await this.missionModel.findOne({
-      type: 'sleep',
-      status: 'during',
-    });
-
-    if (!missionInfo) {
-      return 'Mission not found';
-    }
-
-    const mission = await this.missionModel.findByIdAndUpdate(missionInfo._id, {
-      count: missionInfo.count + 1,
-    });
-
-    this.missionGateway.sendMissionProgress(userInfo.wallet, mission.count);
-
-    if (mission.count === mission.goal) {
-      await this.missionModel.findByIdAndUpdate(mission._id, {
-        status: 'ended',
-        result: true,
-      });
-
-      this.missionGateway.sendMissionComplete();
-    }
-
-    return mission;
+    return missions;
   }
 }
