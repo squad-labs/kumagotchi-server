@@ -1,6 +1,30 @@
 ## Application Url
 
 [Kumagochi](https://kumagochi-client.vercel.app)
+
+## Teck Staks
+
+### Client
+- Next.js
+- TypeScript
+- Lexical Editor
+- Viem
+- Wagmi
+- Phaser
+- Web3Auth
+- OnChainKit
+- Coinbase-SDK
+- XMTP
+
+### Server
+- Nest.js
+- Ethers
+- Viem
+- MongoDB
+
+### Contract
+- Solidity
+- Hardhat
   
 ## Smart Contract Deployment
 
