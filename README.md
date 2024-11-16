@@ -7,6 +7,7 @@
 ### Client
 - Next.js
 - TypeScript
+- Redux
 - Lexical Editor
 - Viem
 - Wagmi
@@ -18,6 +19,7 @@
 
 ### Server
 - Nest.js
+- TypeScript
 - Ethers
 - Viem
 - MongoDB
