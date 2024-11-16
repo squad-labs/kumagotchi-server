@@ -19,9 +19,9 @@ export class ChatController {
   @Public()
   @Get('recent')
   getRecentMessages(
-    @Query() { page }: PageReqDto,
-    @Query() { pageSize }: PageReqDto,
+    // @Query() { page }: PageReqDto,
+    // @Query() { pageSize }: PageReqDto,
   ) {
-    return this.chatService.getRecentMessages(page, pageSize);
+    return this.chatService.getRecentMessages();
   }
 }
