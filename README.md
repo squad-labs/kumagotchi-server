@@ -1,6 +1,6 @@
 ## Application Url
 
-- [Kumagochi](https://kumagochi-client.vercel.app)
+[Kumagochi](https://kumagochi-client.vercel.app)
   
 ## Smart Contract Deployment
 
