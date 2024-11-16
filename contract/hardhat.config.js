@@ -20,6 +20,11 @@ module.exports = {
       accounts: [process.env.SEVICE_KEY],
       chainId: 8453,
     },
+    base_sepolia: {
+      url: process.env.BASE_SEPOLIA_RPC,
+      accounts: [process.env.SEVICE_KEY],
+      chainId: 84532,
+    },
     neon_devnet: {
       url: process.env.NEON_DEVNET_RPC,
       accounts: [process.env.SEVICE_KEY],
