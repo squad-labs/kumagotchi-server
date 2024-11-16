@@ -1,0 +1,94 @@
+.input-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 99999999;
+
+  .input-wrapper {
+    height: 3rem;
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .input {
+      width: 100%;
+      height: 100%;
+      padding-left: 1rem;
+
+      &::placeholder {
+        font-family: "Tomorrow-Regular";
+        color: var(--BASE-BLUE-1-OPACITY-4);
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 4px);
+      height: 100%;
+      border-top: 2px solid var(--BASE-BLUE-1);
+      border-bottom: 2px solid var(--BASE-BLUE-1);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: calc(100% - 4px);
+      border-right: 2px solid var(--BASE-BLUE-1);
+      border-left: 2px solid var(--BASE-BLUE-1);
+    }
+  }
+
+  .input-button {
+    height: 3rem;
+    width: 6.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: rgba(230, 230, 230, 1);
+
+    .button-title {
+      font-family: "Tomorrow-SemiBold";
+      color: var(--BASE-BLUE-1);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 4px);
+      height: 100%;
+      border-top: 2px solid var(--BASE-BLUE-1);
+      border-bottom: 2px solid var(--BASE-BLUE-1);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: calc(100% - 4px);
+      border-right: 2px solid var(--BASE-BLUE-1);
+      border-left: 2px solid var(--BASE-BLUE-1);
+    }
+  }
+}

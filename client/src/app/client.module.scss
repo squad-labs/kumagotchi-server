@@ -1,0 +1,134 @@
+.client {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .title-wrapper {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    .title {
+      font-size: 1.7rem;
+      color: var(--BASE-BLUE-1);
+      font-family: "Tomorrow-Bold";
+    }
+  }
+
+  .wallet-wrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+
+    .title {
+      font-size: 1.4rem;
+      color: var(--BASE-BLUE-1);
+      font-family: "Tomorrow-Bold";
+    }
+  }
+}
+
+.client-connect {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+
+  .client-inner {
+    width: 402px;
+    height: 767px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-image: url("/image/list-container-bg.png");
+    background-size: cover;
+
+    .inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      .scroll-bar {
+        position: absolute;
+        top: 1rem;
+        left: 50%;
+        transform: translate(-50%, 0.5rem);
+        width: 3.25rem;
+        height: 0.55rem;
+        background-color: var(--BASE-BLUE-1);
+      }
+
+      .title-wrapper {
+        padding-top: 4rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .title {
+          font-size: 1.7rem;
+          color: var(--BASE-BLUE-1);
+          font-family: "Tomorrow-Bold";
+        }
+      }
+
+      .list-wrapper {
+        width: 90%;
+        margin: 2rem auto 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+
+      .input-wrapper {
+        width: 90%;
+        position: absolute;
+        bottom: 1.85rem;
+        height: 4.25rem;
+        left: 50%;
+        transform: translate(-50%, 0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: calc(100% - 4px);
+          height: 100%;
+          border-top: 2px solid var(--BASE-BLUE-1);
+          border-bottom: 2px solid var(--BASE-BLUE-1);
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+          height: calc(100% - 4px);
+          border-right: 2px solid var(--BASE-BLUE-1);
+          border-left: 2px solid var(--BASE-BLUE-1);
+        }
+      }
+    }
+  }
+}

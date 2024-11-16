@@ -1,0 +1,36 @@
+{
+  "anims": [
+    {
+      "key": "mission",
+      "type": "frames",
+      "repeat": -1,
+      "frameRate": 4,
+      "frames": [
+        {
+          "key": "kumagochi",
+          "frame": "default"
+        },
+        {
+          "key": "kumagochi",
+          "frame": "mission"
+        }
+      ]
+    },
+    {
+      "key": "hello",
+      "type": "frames",
+      "repeat": -1,
+      "frameRate": 4,
+      "frames": [
+        {
+          "key": "kumagochi",
+          "frame": "default"
+        },
+        {
+          "key": "kumagochi",
+          "frame": "hello"
+        }
+      ]
+    }
+  ]
+}

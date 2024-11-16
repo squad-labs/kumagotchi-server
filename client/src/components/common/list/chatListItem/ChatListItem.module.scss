@@ -1,0 +1,108 @@
+.item-container {
+  width: 100%;
+
+  &.left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.8rem;
+
+    .text-wrapper-left {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+
+      .metadata-left {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.4rem;
+
+        .username {
+          font-size: 1.1rem;
+          font-family: "Tomorrow-SemiBold";
+          color: var(--BASE-BLUE-1);
+        }
+
+        .date {
+          font-size: 1.1rem;
+          font-family: "Tomorrow-Regular";
+          color: rgba(116, 124, 154, 1);
+        }
+      }
+
+      .message-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        .message {
+          color: var(--BASE-BLUE-1);
+          font-size: 1.1rem;
+          font-family: "Tomorrow-Regular";
+        }
+      }
+    }
+  }
+
+  &.right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.8rem;
+
+    .text-wrapper-right {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      flex-direction: column;
+      padding-left: 20%;
+
+      .metadata-right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.4rem;
+
+        .username {
+          font-size: 1.1rem;
+          font-family: "Tomorrow-SemiBold";
+          color: var(--BASE-BLUE-1);
+        }
+
+        .date {
+          font-size: 1.1rem;
+          font-family: "Tomorrow-Regular";
+          color: rgba(116, 124, 154, 1);
+        }
+      }
+
+      .message-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        .message {
+          color: var(--BASE-BLUE-1);
+          font-size: 1.1rem;
+          font-family: "Tomorrow-Regular";
+        }
+      }
+    }
+    .image {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+    .image {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+  }
+}

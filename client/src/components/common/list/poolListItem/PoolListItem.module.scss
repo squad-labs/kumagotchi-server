@@ -1,0 +1,72 @@
+.item-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--ACHROMATIC-REVERSE-OPACITY-1);
+  padding: 1.2rem 1rem;
+  position: relative;
+
+  .image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .image {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+    }
+
+    .text-wrapper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      margin-left: 0.5rem;
+
+      .name {
+        font-size: 1.4rem;
+        color: var(--BASE-BLUE-1);
+        font-family: "Tomorrow-Bold";
+      }
+
+      .address {
+        font-size: 1.2rem;
+        color: var(--ACHROMATIC-REVERSE-OPACITY-5);
+        font-family: "Tomorrow-Regular";
+      }
+    }
+  }
+
+  .market-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.7rem;
+
+    .price-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+
+      .price {
+        font-size: 1rem;
+        color: var(--ACHROMATIC-REVERSE-OPACITY-5);
+        font-family: "Tomorrow-Regular";
+      }
+
+      .total {
+        font-size: 1rem;
+        color: var(--BASE-BLUE-1);
+        font-family: "Tomorrow-Regular";
+      }
+    }
+
+    .logo {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

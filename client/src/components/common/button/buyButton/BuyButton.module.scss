@@ -1,0 +1,16 @@
+.button-container {
+  height: 4rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &.normal {
+    background-image: url("/image/buy-token-bg.svg");
+    width: 10rem;
+  }
+
+  &.expand {
+    width: 100%;
+    background-image: url("/image/buy-token-expand-bg.svg");
+  }
+}
