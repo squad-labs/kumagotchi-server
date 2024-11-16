@@ -30,5 +30,30 @@ module.exports = {
       accounts: [process.env.SEVICE_KEY],
       chainId: 245022926,
     },
+    zircuit_testnet: {
+      url: process.env.ZIRCUIT_RPC,
+      accounts: [process.env.SEVICE_KEY],
+      chainId: 48899,
+    },
+    mantle_testnet: {
+      url: process.env.MANTLE_TESTNET_RPC,
+      accounts: [process.env.SEVICE_KEY],
+      chainId: 5003,
+    },
+    scroll_testnet: {
+      url: process.env.SCROLL_TESTNET_RPC,
+      accounts: [process.env.SEVICE_KEY],
+      chainId: 534351,
+    },
+    morph_holesky: {
+      url: process.env.MORPH_HOLESKY_RPC,
+      accounts: [process.env.SEVICE_KEY],
+      chainId: 2810,
+    },
+    linea_testnet: {
+      url: process.env.LINEA_TESTNET_RPC,
+      accounts: [process.env.SEVICE_KEY],
+      chainId: 59141,
+    },
   },
 };
