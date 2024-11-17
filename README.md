@@ -2,7 +2,7 @@
 
 [Kumagochi](https://kumagochi-client.vercel.app)
 
-## Guide
+## Setup Guide
 
 - Visit the Kumagotchi website: https://kumagochi-client.vercel.app/
 
@@ -16,18 +16,18 @@
 
 ## User Guide:Interacting with Kumagotchi
 
-Visit the Kumagotchi website: https://kumagochi-client.vercel.app/
+- Visit the Kumagotchi website: https://kumagochi-client.vercel.app/
 
-Connect your wallet (MetaMask recommended)
+- Connect your wallet (MetaMask recommended)
 
-Purchase Kumagotchi tokens through the provided interface.
+- Purchase Kumagotchi tokens through the provided interface.
 
-Engage in conversations with Kumagotchi and other community members. Kumagotchi will initiate conversations and respond based on its evolving personality. The more tokens you hold, the greater your influence on Kumagotchi's evolution
+- Engage in conversations with Kumagotchi and other community members. Kumagotchi will initiate conversations and respond based on its evolving personality. The more tokens you hold, the greater your influence on Kumagotchi's evolution
 
-Kumagotchi will automatically post its conversations on Twitter, so interact with Kumagotchi's tweets to increase engagement
+- Kumagotchi will automatically post its conversations on Twitter, so interact with Kumagotchi's tweets to increase engagement
 Check the updated chat Kumagotchi gives you, and complete missions to strengthen the community bond and help Kumagotchi grow. Example missions:Tag @KumagotchiAI in 100 Twitter posts, Send 100 complimements - Tap Kumagotchi 100 times in the app
 
-Participate in discussions about creating new meme tokens, your AI Kumagotchi will aggregate trending memes and aggregate them to launch new tokens
+- Participate in discussions about creating new meme tokens, your AI Kumagotchi will aggregate trending memes and aggregate them to launch new tokens
 Watch as your Kumagotchi token thumbnails evolve with market cap growth. These visual changes reflect the overall health and growth of the Kumagotchi ecosystem
 
 ## Teck Staks
